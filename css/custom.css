@@ -1,0 +1,122 @@
+.info.legend{
+    background-color:white;
+    padding:10px;
+    opacity:0.8;       
+}
+
+.info.legend .row{
+    padding:0;
+    margin:0;    
+}
+
+.info.legend .row::before, .info.legend .row::after{
+    display:none;
+}
+
+.info.legend .col-md-2{
+    padding:0;
+    padding-left:10px;
+    margin:0;
+}
+
+
+html, body, #map {
+    height:100vh;   
+    margin:0;
+    padding:0;
+    overflow:hidden;
+}	
+
+.legend-symbol{
+    padding-top:10px;
+    padding-bottom:0;
+    width:50px;
+    display:inline-block;
+    margin-left:20px;
+}
+
+.leaflet-control-attribution.leaflet-control {
+    display:none;
+}
+
+.leaflet-control-scale-line, .leaflet-control-zoom.leaflet-bar.leaflet-control{   
+    margin-top:200px;
+}
+
+#xAxis path, #yAxis path, #xAxis line, #yAxis line, .axis {
+    fill: none;
+    shape-rendering: crispEdges;
+    stroke:white;
+}
+
+text, .dc-chart g.row text {
+    font-size: 11px;
+    fill: black;       
+}
+
+svg{
+    font-size:11px;
+}
+
+.axis y left{
+    stroke:#555;
+}
+
+body{
+    padding:0px;
+    margin:0;    
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    color: #333333;
+}
+
+.axis line,
+.axis path {
+    shape-rendering: crispEdges;
+    fill: transparent;
+    stroke: black;
+}
+
+.axis text {
+    font-size: 11px;
+}
+
+
+.axis{
+    stroke: transparent;
+}
+
+.text{
+    color:black;
+}
+
+
+.d3-tip{
+    color:white;
+}
+
+rect.background{
+    fill:transparent;
+    cursor:move;
+}
+
+path, rect{
+    opacity:0.7;
+}
+
+
+path.leaflet-clickable:hover{
+    fill-opacity:0.9;
+}
+
+a{
+    cursor:default;
+}
+
+#age-groups-container {
+    display:none;
+}
+
+.legend{
+    border-collapse:separate;
+    border-spacing:10px;
+}

@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1 user-scalable=no">
+        <!--==============================BASIC CSS FILES================================ -->
+        <link rel="stylesheet" href="css/leaflet.css" />  
+        <link rel="stylesheet" href="css/font-awesome.css" />      
+        <link rel="stylesheet" href="css/jquery-ui.css">
+        <link rel="stylesheet" href="css/bootstrap.min.css" /> 
+        <script src="css/bootswatch.css"></script>
+        <!--==============================//BASIC CSS FILES================================ -->
+        <!--==============================BASIC JAVASCRIPT FILES================================ -->
+        <script src="js/jquery-1.11.2.min.js"></script>
+        <script src="js/jquery-ui.js"></script>
+        <script src="js/bootstrap.min.js"></script>
+        <script src="js/bootswatch.js"></script>
+        <script src="js/d3-3.5.0.min-3b564392.js" type="text/javascript"></script>
+        <script src="js/d3.tip.v0.6.3.js" type="text/javascript"></script>     
+        <script src="js/leaflet.js"></script>
+        <script src="js/leaflet-hash.js"></script>
+        <script src="js/leaflet.ajax.js"></script>
+        <script src="js/Autolinker.min.js"></script>
+        <!--==============================//BASIC JAVASCRIPT FILES================================ -->
+        <!--==============================CONTAINS GEOJSON DATA FOR MRT POINTS AND LINES======== -->
+        <script src="residentialData/exp_MRTpoints.js"></script>
+        <script src="residentialData/exp_MRTlinesall.js"></script>
+        <!--==============================//CONTAINS GEOJSON DATA FOR MRT POINTS AND LINES======== -->
+        <!--==============================CUSTOM CSS FILES TO STYLE PAGE LAYOUT ACCORDING TO PERSONAL PREFERENCES======== -->
+        <link rel="stylesheet" href="css/custom.css" />        
+        <!--==============================//CUSTOM CSS FILES TO STYLE PAGE LAYOUT ACCORDING TO PERSONAL PREFERENCES======== -->
+    </head>
+    <body>        
+        <div class="navbar navbar-default navbar-fixed-top" style="z-index:5000;margin-bottom:300px">
+            <small class="navbar-brand" style="position:absolute;float:left;font-size:10px;z-index:100;margin-bottom:10px">Built with Leaflet and D3</small><br>
+            <div class="container">
+                <div class="navbar-header">                    
+                    <a class="navbar-brand">Singapore's Population</a>
+                    <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-main">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                </div>
+                <div class="navbar-collapse collapse" id="navbar-main">
+                    <ul class="nav navbar-nav">
+                        <li>
+                            <a id="age-groups">Charts</a>           
+                        </li>
+                        <li>                
+                            <a id="show-pop-map">
+                                <table>
+                                    <tr>
+                                        <td>
+                                            <input type="checkbox" id="control-pop-map" checked />
+                                        </td>
+                                        <td>
+                                            &nbsp;Population
+                                        </td>
+                                    </tr>
+                                </table>
+                            </a>
+                        </li>
+                        <li>                
+                            <a id="show-mrt-map">
+                                <table>
+                                    <tr>
+                                        <td>
+                                            <input type="checkbox" id="control-mrt-map" checked />
+                                        </td>
+                                        <td>
+                                            &nbsp;MRT
+                                        </td>
+                                    </tr>
+                                </table>
+                            </a>
+                        </li>
+                        <li>                
+                            <a id="show-legend">
+                                <table>
+                                    <tr>
+                                        <td>
+                                            <input type="checkbox" id="control-legend" checked />
+                                        </td>
+                                        <td>
+                                            &nbsp;Legend
+                                        </td>
+                                    </tr>
+                                </table>
+                            </a>
+                        </li>
+                    </ul>
+
+                    <ul class="nav navbar-nav navbar-right">    
+                        <li><a>                 
+                                <table>
+                                    <tr>
+                                        <td>
+                                            <input id="base0" type="radio" name="basemap" checked/>
+                                        </td>
+                                        <td>
+                                            &nbsp;Street
+                                        </td>                           
+                                    </tr>
+                                </table>
+                            </a>            
+                        </li>
+                        <li><a>                 
+                                <table>
+                                    <tr>
+                                        <td>
+                                            <input id="base1" type="radio" name="basemap" />
+                                        </td>
+                                        <td>
+                                            &nbsp;Terrain
+                                        </td>                           
+                                    </tr>
+                                </table>
+                            </a>            
+                        </li>
+                        <li><a>                 
+                                <table>
+                                    <tr>
+                                        <td>
+                                            <input id="base2" type="radio" name="basemap" />
+                                        </td>
+                                        <td>
+                                            &nbsp;Transport
+                                        </td>                           
+                                    </tr>
+                                </table>
+                            </a>            
+                        </li>
+                        <li><a>                 
+                                <table>
+                                    <tr>                           
+                                        <td>
+                                            <input id="slide" type="range" min="0" max="1" step="0.1" value="0.7">
+                                        </td>
+                                        <td>
+                                            &nbsp;Map&nbsp;Opacity
+                                        </td>
+                                    </tr>
+                                </table>
+                            </a>            
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div id="age-groups-container" class="leaflet-control-layers leaflet-control-layers-expanded leaflet-control" aria-haspopup="true" style="z-index:3;position:absolute;margin:100px;margin-left:200px;margin-top:70px;height:450px;width:1000px">   
+            <button id="close-age-groups" class="btn btn-danger pull-right"><i class="fa fa-times"></i></button>
+            <h4>Gender Age Groups</h4>
+            <div id="dashboard"></div>
+        </div>
+        
+        
+        
+        <!--==============================MAP IS RENDERED IN THIS DIV BLOCK================================ -->   
+        <div id="map"></div>
+        <!--=============================//MAP IS RENDERED IN THIS DIV BLOCK================================ -->          
+        <script src="js/main.js"></script>
+    </body>
+</html>
